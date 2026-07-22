@@ -5,15 +5,7 @@ resource "aws_instance" "ec2" {
     count         = 2
     disable_api_termination = false 
     vpc_security_group_ids = ["sg-0c98b6b2580462b01"]
-    
-    user_data = <<-EOF
-                #!/bin/bash
-                sudo dnf update
-                sudo dnf install httpd -y
-                sudo systemctl enable httpd.service
-                sudo systemctl start httpd.service
-                sudo echo "<h1> Welcome to terraform </h1>" > /var/www/html/index.html
-                EOF
+    user_data = file("/root/terraform-b32/day-2/user-data.sh")
 
     root_block_device {
         volume_size = 8
