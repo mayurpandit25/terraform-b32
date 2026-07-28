@@ -12,8 +12,8 @@ module "lb" {
     source = "./module/lb"
     vpc_id = module.vpc.vpc_id 
     sg_id = module.vpc.sg_id 
-    public_subnet_1_id = module.vpc.public_subnet_1_id 
-    public_subnet_2_id = module.vpc.public_subnet_2_id 
+    public_subnet_1_id = module.vpc.public_subnet_1.id 
+    public_subnet_2_id = module.vpc.public_subnet_2.id 
     lb_type = "application"
 }
 
@@ -27,8 +27,8 @@ module "asg" {
     min_size =  2
     max_size =  5
     target_arn = module.lb.target_group_arns 
-    public_subnet_1 = module.vpc.public_subnet_1_id 
-    public_subnet_2 = module.vpc.public_subnet_2_id   
+    public_subnet_1 = module.vpc.public_subnet_1.id 
+    public_subnet_2 = module.vpc.public_subnet_2.id   
 }
 
 
