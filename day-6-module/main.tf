@@ -20,7 +20,7 @@ module "lb" {
 module "asg" {
     source = "./module/asg"
     image_id = "ami-028ba4d4ccb4b7b72"
-    key_name = "my-key_ohio"
+    key_name = "my-key-ohio"
     instance_type = "t3.micro"
     sg_id = module.vpc.sg_id
     desired_capacity = 2 
@@ -30,6 +30,8 @@ module "asg" {
     public_subnet_1 = module.vpc.public_subnet_id_1 
     public_subnet_2 = module.vpc.public_subnet_id_2 
 }
+
+
 
 
 
